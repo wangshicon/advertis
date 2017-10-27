@@ -10,7 +10,7 @@ import java.util.List;
  * @author Lord
  * @date 2017年10月27日 下午2:51:32
  */
-public interface CustomerService {
+public interface CustomersService {
 
 	 public int insert(Customers customers);
 
