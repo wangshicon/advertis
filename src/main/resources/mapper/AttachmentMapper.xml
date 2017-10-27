@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lord.advertis.dao.AttachmentDao" >
+  <resultMap id="BaseResultMap" type="com.lord.advertis.domain.Attachment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+    <result column="attname" property="attname" jdbcType="VARCHAR" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+    <result column="filesize" property="filesize" jdbcType="INTEGER" />
+    <result column="cid" property="cid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, filename, attname, filepath, filesize, cid
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attachment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from attachment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.lord.advertis.domain.Attachment" >
+    insert into attachment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+      <if test="attname != null" >
+        attname,
+      </if>
+      <if test="filepath != null" >
+        filepath,
+      </if>
+      <if test="filesize != null" >
+        filesize,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="attname != null" >
+        #{attname,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        #{filesize,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.lord.advertis.domain.Attachment" >
+    update attachment
+    <set >
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="attname != null" >
+        attname = #{attname,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        filesize = #{filesize,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
