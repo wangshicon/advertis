@@ -1,10 +1,7 @@
 package com.lord.advertis.service.serviceimpl;
 
-import com.lord.advertis.dao.CategoryDao;
 import com.lord.advertis.dao.CustomersDao;
-import com.lord.advertis.domain.Category;
 import com.lord.advertis.domain.Customers;
-import com.lord.advertis.service.CategoryService;
 import com.lord.advertis.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
