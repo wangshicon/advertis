@@ -10,7 +10,6 @@ import com.lord.advertis.common.ResultAjax;
  */
 public class ResultUtil {
 	
-	@SuppressWarnings("rawtypes")
 	public static ResultAjax success(Object object){
 		ResultAjax<Object> result = new ResultAjax<Object>();
 		result.setCode(0);
@@ -19,12 +18,10 @@ public class ResultUtil {
 		return result;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public static ResultAjax success(){
 		return success(null);
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public static ResultAjax error(Integer code, String msg){
 		ResultAjax<Object> result = new ResultAjax<Object>();
 		result.setCode(code);
