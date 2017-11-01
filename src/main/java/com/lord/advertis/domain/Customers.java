@@ -3,6 +3,8 @@ package com.lord.advertis.domain;
 import com.lord.advertis.base.BaseBean;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.Date;
+
 /**
  * @Description: 客户意向实体
  * @author Lord
@@ -26,6 +28,9 @@ public class Customers extends BaseBean {
 
     // 信息
     private String message;
+
+    // 创建时间
+    private Date createtime;
 
     public String getUsername() {
         return username;
@@ -57,5 +62,13 @@ public class Customers extends BaseBean {
 
     public void setMessage(String message) {
         this.message = message == null ? null : message.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 }
