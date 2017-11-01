@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsersDao extends BaseMapper<Users, Integer>{
 
+    public Users findByLoginName(String loginname);
+
 }
