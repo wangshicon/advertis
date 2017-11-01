@@ -12,6 +12,6 @@ public interface CustomersDao extends BaseMapper<Customers, Integer>{
 
     public List<Customers> findAll();
 
-    public List<Customers> selectBylimit(@Param("offset")Integer offset, @Param("offset")Integer number);
+    public List<Customers> selectBylimit(@Param("offset")Integer offset, @Param("limit")Integer limit);
 
 }
