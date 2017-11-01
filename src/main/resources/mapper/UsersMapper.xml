@@ -71,4 +71,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="findByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from users
+    where loginname = #{loginname,jdbcType=VARCHAR}
+  </select>
+
 </mapper>
