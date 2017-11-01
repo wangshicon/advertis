@@ -7,7 +7,7 @@ package com.lord.advertis.common;
  */
 public enum PageSize {
     
-    ONE(1),ThREE(3),FIVE(5),SIX(6),EIGHT(8),TEN(10),TWOTEEN(12),SIXTEEN(16);
+    ONE(1),ThREE(3),FOUR(4),FIVE(5),SIX(6),EIGHT(8),TEN(10),TWOTEEN(12),SIXTEEN(16);
     
     private int size;
     
