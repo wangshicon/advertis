@@ -17,5 +17,7 @@ public interface UsersService {
 	 public int update(Users users);
 	 
 	 public Users findById(Integer id);
+
+	 public Users findByLoginName(String loginname);
 	 
 }
