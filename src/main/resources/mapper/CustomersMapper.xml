@@ -102,7 +102,7 @@
     <include refid="Base_Column_List" />
     from customers
     ORDER BY createtime DESC
-    limit = #{offset},#{limit}
+    limit ${offset},${limit}
   </select>
 
 </mapper>
