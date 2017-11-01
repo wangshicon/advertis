@@ -55,7 +55,7 @@ public class UsersController {
     public String logout(HttpSession session) {
         // 移除session
         session.removeAttribute(WebSecurityConfig.SESSION_KEY);
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
 }
