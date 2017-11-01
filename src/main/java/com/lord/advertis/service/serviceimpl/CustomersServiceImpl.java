@@ -45,4 +45,9 @@ public class CustomersServiceImpl implements CustomersService {
 		return customersDao.findAll();
 	}
 
+	@Override
+	public List<Customers> selectByLimit(Integer offset, Integer limit) {
+		return customersDao.selectBylimit(offset, limit);
+	}
+
 }
