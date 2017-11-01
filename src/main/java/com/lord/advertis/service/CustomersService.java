@@ -22,4 +22,6 @@ public interface CustomersService {
 	 
 	 public List<Customers> findAll();
 
+	 public List<Customers> selectByLimit(Integer offset, Integer limit);
+
 }
