@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>宏博广告网站管理平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/assets/css/bootstrap.css}" rel="stylesheet">
+    <!--external css-->
+    <link th:href="@{/assets/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/style-responsive.css}" rel="stylesheet">
+
+  	<!-- Message core CSS -->
+  	<link th:href="@{/assets/toastr/toastr.min.css}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+
+	  <div id="login-page">
+	  	<div class="container">
+	  	
+		      <form class="form-login" id="form1" method="post">
+		        <h2 class="form-login-heading">登录</h2>
+		        <div class="login-wrap">
+		            <input type="text" name="loginname" class="form-control" placeholder="账号" autofocus>
+		            <br>
+		            <input type="password" name="password" class="form-control" placeholder="密码">
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="#myModal">忘记密码?</a>
+		                </span>
+		            </label>
+		            <button class="btn btn-theme btn-block" id="sub" type="button"><i class="fa fa-lock"></i>登录</button>
+		            <hr>
+		        </div>
+			  </form>
+
+			  <!-- Modal -->
+			  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+				  <div class="modal-dialog">
+					  <div class="modal-content">
+						  <div class="modal-header">
+							  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							  <h4 class="modal-title">忘记密码?</h4>
+						  </div>
+						  <div class="modal-body">
+							  <p>输入你的邮箱账号重置密码.</p>
+							  <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+						  </div>
+						  <div class="modal-footer">
+							  <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+							  <button class="btn btn-theme" type="button">确定</button>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+			  <!-- modal -->
+	  	</div>
+	  </div>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script th:src="@{/assets/js/jquery.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/assets/toastr/toastr.js}"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" th:src="@{/assets/js/jquery.backstretch.min.js}"></script>
+    <script>
+        $.backstretch("/assets/img/login-bg.jpg", {speed: 500});
+    </script>
+
+	<script type="text/javascript" th:inline="javascript">
+        toastr.options.positionClass = 'toast-bottom-right';
+        $("#sub").click(function(){
+            $.ajax({
+                type: 'POST',
+                data: $("#form1").serialize(),
+                url: '/user/login',
+                success: function(result) {
+                    if(result.code == 0){
+                        window.location.href = "/";
+                    }else{
+						toastr.error(result.msg);
+                    }
+                }
+            });
+        });
+	</script>
+  </body>
+</html>
