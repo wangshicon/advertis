@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * 
  * @Description: 用户模块业务实现逻辑类
@@ -47,5 +49,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public Users findByLoginName(String loginname) {
         return usersDao.findByLoginName(loginname);
+    }
+
+    @Override
+    public List<Users> findAll() {
+        return usersDao.findAll();
     }
 }
