@@ -22,7 +22,7 @@ import java.util.Map;
 
 /**
  *
- * 分类管理
+ * 模块管理
  * Created by on 2017/10/31.
  */
 @Controller
@@ -48,7 +48,7 @@ public class ModuleController {
 		List<Module> list = moduleService.findAll();
 		map.put("total", page.getTotal());
 		map.put("list", list);
-		model.addAttribute("category", map);
+		model.addAttribute("moudles", map);
 		return "module_list";
 	}
 	
@@ -90,8 +90,8 @@ public class ModuleController {
 	/**
 	 * 
 	 * @Title: categoryUpdate
-	 * @Description: 修改分类信息
-	 * @param module	分类信息实体
+	 * @Description: 修改模块信息
+	 * @param module	模块信息实体
 	 * @param bindingResult
 	 * @return
 	 * @author Lord 
@@ -109,13 +109,13 @@ public class ModuleController {
 	/**
 	 * 
 	 * @Title: categoryDelete
-	 * @Description: 删除分类信息
+	 * @Description: 删除模块信息
 	 * @param id	主键id
 	 * @return
 	 * @author Lord 
 	 * @date 2017年6月1日 上午8:46:36
 	 */
-	@DeleteMapping(value="{id}")
+	@DeleteMapping(value="delete/{id}")
 	@ResponseBody
 	public ResultAjax<Module> moduleDelete(@PathVariable("id") Integer id){
 		return ResultUtil.success(moduleService.delete(id));
