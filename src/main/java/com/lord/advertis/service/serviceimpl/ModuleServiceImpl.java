@@ -5,6 +5,9 @@ import com.lord.advertis.domain.Module;
 import com.lord.advertis.service.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,16 +24,19 @@ public class ModuleServiceImpl implements ModuleService {
     private ModuleDao moduleDao;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public int insert(Module module) {
         return moduleDao.insertSelective(module);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public int delete(Integer id) {
         return moduleDao.deleteByPrimaryKey(id);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
     public int update(Module module) {
         return moduleDao.updateByPrimaryKeySelective(module);
     }
