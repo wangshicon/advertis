@@ -25,6 +25,14 @@ public class Users extends BaseBean {
     // 修改时间
     private Date updatetime;
 
+    // 用户名
+    @NotEmpty(message="用户名不能为空")
+    private String username;
+
+    // 角色
+    @NotEmpty(message="角色不能为空")
+    private String role;
+
     public String getLoginname() {
         return loginname;
     }
@@ -47,5 +55,21 @@ public class Users extends BaseBean {
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role == null ? null : role.trim();
     }
 }
