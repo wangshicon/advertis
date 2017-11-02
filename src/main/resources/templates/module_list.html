@@ -25,6 +25,10 @@
     <!-- Confirm core CSS-->
     <link th:href="@{/assets/jqconfirm/css/jquery-confirm.css}" rel="stylesheet">
 
+    <!-- zeroModal core CSS-->
+    <link th:href="@{/assets/zeroModal/zeroModal.css}" rel="stylesheet">
+
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -144,7 +148,7 @@
                                   <td style="max-width: 400px; white-space: nowrap; overflow: hidden; text-overflow:ellipsis;" th:text="${module.desction}"></td>
                                   <td><span class="label label-info label-mini" th:text="${#dates.format(module.createtime, 'yyyy-MM-dd HH:mm:ss')}">Due</span></td>
                                   <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button>
+                                      <button class="btn btn-success btn-xs" th:onclick="'findModule('+${module.id}+')'"><i class="fa fa-search"></i></button>
                                       <button class="btn btn-primary btn-xs" th:onclick="'findById('+${module.id}+')'" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i></button>
                                       <button class="btn btn-danger btn-xs" th:onclick="'deleById('+${module.id}+')'"><i class="fa fa-trash-o"></i></button>
                                   </td>
@@ -209,6 +213,7 @@
     <script th:src="@{/assets/js/jquery.nicescroll.js}" type="text/javascript"></script>
     <script th:src="@{/assets/toastr/toastr.js}"></script>
     <script th:src="@{/assets/jqconfirm/js/jquery-confirm.js}"></script>
+    <script th:src="@{/assets/zeroModal/zeroModal.min.js}"></script>
 
     <!--common script for all pages-->
     <script th:src="@{/assets/js/common-scripts.js}"></script>
