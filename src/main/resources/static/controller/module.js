@@ -1,5 +1,10 @@
-
-
+/*!
+ * module.js
+ * Copyright 2017-2018
+ * Authors: Lord
+ * All Rights Reserved.
+ * 模块管理路由控制器
+ */
 
 toastr.options.positionClass = 'toast-bottom-right';
 $("#sub").click(function(){
@@ -34,7 +39,7 @@ function findById(id){
             }
         }
     });
-};
+}
 
 function deleById(id){
     $.confirm({
@@ -64,4 +69,24 @@ function deleById(id){
             },
         }
     });
-};
+}
+
+function findModule(id){
+    $.ajax({
+        type: 'GET',
+        url: '/module/'+id,
+        success: function(result) {
+            if(result.code == 0){
+                zeroModal.show({
+                    title: '查看',
+                    content: '名称：'+result.data.name+'<br><br>描述：'+result.data.desction,
+                    ok: false,
+                    cancel: true,
+                    overlay: true,
+                });
+            }else{
+                toastr.error(result.msg);
+            }
+        }
+    });
+}
