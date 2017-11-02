@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.lord.advertis.common.PageSize;
 import com.lord.advertis.domain.Customers;
+import com.lord.advertis.domain.Users;
 import com.lord.advertis.service.BrowseService;
 import com.lord.advertis.service.CustomersService;
 import com.lord.advertis.service.UsersService;
@@ -37,8 +38,11 @@ public class IndexController {
     public String index(Model model) {
 
         List<Customers> customersList = customersService.selectByLimit(0,4);
+        List<Users> usersList = usersService.findAll();
 
+        /*剩余统计图表展示模块*/
         model.addAttribute("customers", customersList);
+        model.addAttribute("users", usersList);
         return "index";
     }
 }
