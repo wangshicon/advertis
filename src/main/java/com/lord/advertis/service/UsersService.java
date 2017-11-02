@@ -2,6 +2,8 @@ package com.lord.advertis.service;
 
 import com.lord.advertis.domain.Users;
 
+import java.util.List;
+
 /**
  * 
  * @Description: 用户业务逻辑接口类
@@ -19,5 +21,7 @@ public interface UsersService {
 	 public Users findById(Integer id);
 
 	 public Users findByLoginName(String loginname);
+
+	 public List<Users> findAll();
 	 
 }
