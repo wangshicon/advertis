@@ -32,6 +32,9 @@ public class Customers extends BaseBean {
     // 创建时间
     private Date createtime;
 
+    // 状态
+    private Integer status;
+
     public String getUsername() {
         return username;
     }
@@ -70,5 +73,13 @@ public class Customers extends BaseBean {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
