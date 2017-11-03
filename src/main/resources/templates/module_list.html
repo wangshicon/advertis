@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-      <meta name="description" content="">
-      <meta name="author" content="Dashboard">
-      <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>宏博广告网站管理平台</title>
 
@@ -27,7 +27,6 @@
 
     <!-- zeroModal core CSS-->
     <link th:href="@{/assets/zeroModal/zeroModal.css}" rel="stylesheet">
-
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -67,7 +66,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
               	  <h5 class="centered">宏博广告</h5>
               	  	
                   <li class="mt">
@@ -138,7 +137,7 @@
                                   <th><i class="fa fa-info-circle" aria-hidden="true"></i> 名称</th>
                                   <th><i class="fa fa-question-circle"></i></i> 描述</th>
                                   <th><i class="fa fa-calendar"></i> 时间</th>
-                                  <th><i class="fa fa-edit">操作</i></th>
+                                  <th><i class="fa fa-edit"></i> 操作</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -173,7 +172,7 @@
                   <div class="modal-body">
                       <form id="form1" method="post">
                           <div class="form-group">
-                              <input type="hidden" name="id" id="moduleId" value=""></input>
+                              <input type="hidden" name="id" id="moduleId" value="">
                               <label for="recipient-name" class="control-label">名称:</label>
                               <input type="text" class="form-control" id="recipient-name" name="name" placeholder="请输入模块名称...">
                           </div>
