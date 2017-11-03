@@ -144,7 +144,7 @@
                               <tr th:each="category : ${categorys.list}">
                                   <td><span class="badge" th:text="${category.id}">1</span></td>
                                   <td class="hidden-phone" th:text="${category.name}">>Lorem Ipsum dolor</td>
-                                  <td>12000.00$ </td>
+                                  <td><span class="badge bg-success" th:text="${category.status eq 0 ? 'yes':'no'}">12000.00$</span></td>
                                   <td><span class="label label-info label-mini" th:text="${#dates.format(category.createtime, 'yyyy-MM-dd HH:mm:ss')}">>Due</span></td>
                                   <td>
                                       <button class="btn btn-success btn-xs" th:onclick="'findModule('+${category.id}+')'"><i class="fa fa-search"></i></button>
