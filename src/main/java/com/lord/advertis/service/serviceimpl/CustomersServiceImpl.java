@@ -35,8 +35,17 @@ public class CustomersServiceImpl implements CustomersService {
 		return customersDao.updateByPrimaryKeySelective(customers);
 	}
 
+	/**
+	 *  查看客户意向并改变信息状态为"已读"
+	 * @param status :1 = 已读
+	 * @return
+	 */
 	@Override
 	public Customers findById(Integer id) {
+		Customers entity = new Customers();
+		entity.setId(id);
+		entity.setStatus(1);
+		customersDao.updateByPrimaryKeySelective(entity);
 		return customersDao.selectByPrimaryKey(id);
 	}
 
