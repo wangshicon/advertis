@@ -6,6 +6,7 @@
  * 客户意向管理路由控制器
  */
 
+toastr.options.positionClass = 'toast-bottom-right';
 function deleById(id){
     $.confirm({
         title: '操作提示!',
