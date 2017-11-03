@@ -47,7 +47,7 @@ function deleById(id){
         content: '确定要删除选择的数据吗？',
         buttons: {
             确定: {
-                btnClass: 'btn-success',
+                btnClass: 'btn-danger',
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
