@@ -143,7 +143,7 @@
                               <tbody>
                               <tr th:each="category : ${categorys.list}">
                                   <td><span class="badge" th:text="${category.id}">1</span></td>
-                                  <td class="hidden-phone" th:text="${category.name}">>Lorem Ipsum dolor</td>
+                                  <td class="hidden-phone" th:text="${category.name}">Lorem Ipsum dolor</td>
                                   <td><span class="badge bg-success" th:text="${category.status eq 0 ? 'yes':'no'}">12000.00$</span></td>
                                   <td><span class="label label-info label-mini" th:text="${#dates.format(category.createtime, 'yyyy-MM-dd HH:mm:ss')}">>Due</span></td>
                                   <td>
@@ -212,7 +212,7 @@
     <script th:src="@{/assets/zeroModal/zeroModal.min.js}"></script>
 
     <!--common script for all pages-->
-    <script src="assets/js/common-scripts.js"></script>
+    <script th:src="@{/assets/js/common-scripts.js}"></script>
     <script th:src="@{/controller/config.js}"></script>
 
     <!--script for this page-->
