@@ -48,7 +48,7 @@ public class CategoryController {
 		List<Category> list = categoryService.findAll();
 		map.put("total", page.getTotal());
 		map.put("list", list);
-		model.addAttribute("category", map);
+		model.addAttribute("categorys", map);
 		return "category_list";
 	}
 	
@@ -115,7 +115,7 @@ public class CategoryController {
 	 * @author Lord 
 	 * @date 2017年6月1日 上午8:46:36
 	 */
-	@DeleteMapping(value="{id}")
+	@DeleteMapping(value="/delete/{id}")
 	@ResponseBody
 	public ResultAjax<Category> categoryDelete(@PathVariable("id") Integer id){
 		return ResultUtil.success(categoryService.delete(id));
