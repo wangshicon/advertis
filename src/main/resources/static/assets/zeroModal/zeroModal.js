@@ -38,7 +38,7 @@
     _zero_modal_template += '           {{#close}}<div title="关闭" zero-close-unique="{{unique}}" class="zeromodal-close"></div>{{/close}}';
     _zero_modal_template += '           {{#max}}<div title="最大化/取消最大化" zero-max-unique="{{unique}}" class="zeromodal-max"></div>{{/max}}';
     _zero_modal_template += '           {{#min}}<div title="最小化/取消最小化" zero-min-unique="{{unique}}" class="zeromodal-min"></div>{{/min}}';
-    _zero_modal_template += '           <span zero-title-unique="{{unique}}" class="modal-title">{{#escape}}{{&title}}{{/escape}}{{^escape}}{{title}}{{/escape}}</span>';
+    _zero_modal_template += '           <span zero-title-unique="{{unique}}" class="zero-modal-title">{{#escape}}{{&title}}{{/escape}}{{^escape}}{{title}}{{/escape}}</span>';
     _zero_modal_template += '       </div>';
     _zero_modal_template += '       <div zero-unique-body="{{unique}}" class="zeromodal-body">';
     _zero_modal_template += '           {{#url}}<div class="zeromodal-loading1"></div>{{#iframe}}<iframe zero-unique-frame="{{unique}}" src="{{url}}" class="zeromodal-frame"></iframe>{{/iframe}}{{/url}}';
