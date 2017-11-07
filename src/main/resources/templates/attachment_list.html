@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>宏博广告网站管理平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/assets/css/bootstrap.css}" rel="stylesheet">
+    <!-- external css-->
+    <link th:href="@{/assets/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet">
+    <link th:href="@{/assets/css/style-responsive.css}" rel="stylesheet">
+
+    <!-- JqueryTree core CSS -->
+    <link th:href="@{/assets/jqtree/css/style.css}" rel="stylesheet"/>
+    
+    <!--HTML5 UploadFile core CSS-->
+    <link th:href="@{/assets/h5upload/control/css/zyUpload.css}" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a th:href="@{/}" class="logo"><b>Hongbo advertising</b></a>
+            <!--logo end-->
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" th:href="@{/user/logout}">注销</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--左侧导航 start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><img th:src="@{/assets/img/ui-sam.jpg}" class="img-circle" width="60"></p>
+              	  <h5 class="centered">宏博广告</h5>
+              	  	
+                  <li class="mt">
+                      <a th:href="@{/}">
+                          <i class="fa fa-dashboard"></i>
+                          <span>仪表盘</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a th:href="@{/module}">
+                          <i class="fa fa-desktop"></i>
+                          <span>模块管理</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a th:href="@{/customers}">
+                          <i class="fa fa-cogs"></i>
+                          <span>分类管理</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a th:href="@{/customers}">
+                          <i class="fa fa-book"></i>
+                          <span>客户意向</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>附件管理</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a th:href="@{/attachment/gallery}">图片墙</a></li>
+                          <li class="active"><a th:href="@{/attachment}">附件列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a th:href="@{/statistics}">
+                          <i class=" fa fa-bar-chart-o"></i>
+                          <span>访问统计</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- 左侧导航 menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <div class="row mt">
+                  <div class="col-lg-12">
+                    <div class="content-panel">
+                        <div class="tree col-lg-3">
+                            <ul>
+                                <li>
+                                    <span id="category-all" class="selective"><i class="icon-folder-open"></i> 全部</span>
+                                    <ul>
+                                        <li class="cid" th:each="category : ${categorys}">
+                                            <span th:inline="text"><i class="icon-leaf"></i> [[${category.name}]]</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-9">
+                        <div class="col-lg-9"></div>
+                        <div class="col-lg-3" style="padding-bottom: 12px;">
+                            <button type="button" class="btn btn-theme03" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i> 上传</button>
+                            <button type="button" class="btn btn-theme04"><i class="fa fa-recycle" aria-hidden="true"></i> 批量删除</button>
+                        </div>
+                          <section id="unseen">
+                            <table class="table table-bordered table-striped table-condensed">
+                              <thead>
+                              <tr>
+                                  <th>Code</th>
+                                  <th>Company</th>
+                                  <th class="numeric">Price</th>
+                                  <th class="numeric">Change</th>
+                                  <th class="numeric">Change %</th>
+                                  <th class="numeric">Open</th>
+                                  <th class="numeric">High</th>
+                                  <th class="numeric">Low</th>
+                                  <th class="numeric">Volume</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>AAC</td>
+                                  <td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
+                                  <td class="numeric">$1.38</td>
+                                  <td class="numeric">-0.01</td>
+                                  <td class="numeric">-0.36%</td>
+                                  <td class="numeric">$1.39</td>
+                                  <td class="numeric">$1.39</td>
+                                  <td class="numeric">$1.38</td>
+                                  <td class="numeric">9,395</td>
+                              </tr>
+                              <tr>
+                                  <td>AAD</td>
+                                  <td>ARDENT LEISURE GROUP</td>
+                                  <td class="numeric">$1.15</td>
+                                  <td class="numeric">  +0.02</td>
+                                  <td class="numeric">1.32%</td>
+                                  <td class="numeric">$1.14</td>
+                                  <td class="numeric">$1.15</td>
+                                  <td class="numeric">$1.13</td>
+                                  <td class="numeric">56,431</td>
+                              </tr>
+                              <tr>
+                                  <td>AAX</td>
+                                  <td>AUSENCO LIMITED</td>
+                                  <td class="numeric">$4.00</td>
+                                  <td class="numeric">-0.04</td>
+                                  <td class="numeric">-0.99%</td>
+                                  <td class="numeric">$4.01</td>
+                                  <td class="numeric">$4.05</td>
+                                  <td class="numeric">$4.00</td>
+                                  <td class="numeric">90,641</td>
+                              </tr>
+                              <tr>
+                                  <td>ABC</td>
+                                  <td>ADELAIDE BRIGHTON LIMITED</td>
+                                  <td class="numeric">$3.00</td>
+                                  <td class="numeric">  +0.06</td>
+                                  <td class="numeric">2.04%</td>
+                                  <td class="numeric">$2.98</td>
+                                  <td class="numeric">$3.00</td>
+                                  <td class="numeric">$2.96</td>
+                                  <td class="numeric">862,518</td>
+                              </tr>
+                              <tr>
+                                  <td>ABP</td>
+                                  <td>ABACUS PROPERTY GROUP</td>
+                                  <td class="numeric">$1.91</td>
+                                  <td class="numeric">0.00</td>
+                                  <td class="numeric">0.00%</td>
+                                  <td class="numeric">$1.92</td>
+                                  <td class="numeric">$1.93</td>
+                                  <td class="numeric">$1.90</td>
+                                  <td class="numeric">595,701</td>
+                              </tr>
+                              <tr>
+                                  <td>ABY</td>
+                                  <td>ADITYA BIRLA MINERALS LIMITED</td>
+                                  <td class="numeric">$0.77</td>
+                                  <td class="numeric">  +0.02</td>
+                                  <td class="numeric">2.00%</td>
+                                  <td class="numeric">$0.76</td>
+                                  <td class="numeric">$0.77</td>
+                                  <td class="numeric">$0.76</td>
+                                  <td class="numeric">54,567</td>
+                              </tr>
+                              <tr>
+                                  <td>ACR</td>
+                                  <td>ACRUX LIMITED</td>
+                                  <td class="numeric">$3.71</td>
+                                  <td class="numeric">  +0.01</td>
+                                  <td class="numeric">0.14%</td>
+                                  <td class="numeric">$3.70</td>
+                                  <td class="numeric">$3.72</td>
+                                  <td class="numeric">$3.68</td>
+                                  <td class="numeric">191,373</td>
+                              </tr>
+                              <tr>
+                                  <td>ADU</td>
+                                  <td>ADAMUS RESOURCES LIMITED</td>
+                                  <td class="numeric">$0.72</td>
+                                  <td class="numeric">0.00</td>
+                                  <td class="numeric">0.00%</td>
+                                  <td class="numeric">$0.73</td>
+                                  <td class="numeric">$0.74</td>
+                                  <td class="numeric">$0.72</td>
+                                  <td class="numeric">8,602,291</td>
+                              </tr>
+                              <tr>
+                                  <td>AGG</td>
+                                  <td>ANGLOGOLD ASHANTI LIMITED</td>
+                                  <td class="numeric">$7.81</td>
+                                  <td class="numeric">-0.22</td>
+                                  <td class="numeric">-2.74%</td>
+                                  <td class="numeric">$7.82</td>
+                                  <td class="numeric">$7.82</td>
+                                  <td class="numeric">$7.81</td>
+                                  <td class="numeric">148</td>
+                              </tr>
+                              <tr>
+                                  <td>AGK</td>
+                                  <td>AGL ENERGY LIMITED</td>
+                                  <td class="numeric">$13.82</td>
+                                  <td class="numeric">  +0.02</td>
+                                  <td class="numeric">0.14%</td>
+                                  <td class="numeric">$13.83</td>
+                                  <td class="numeric">$13.83</td>
+                                  <td class="numeric">$13.67</td>
+                                  <td class="numeric">846,403</td>
+                              </tr>
+                              <tr>
+                                  <td>AGO</td>
+                                  <td>ATLAS IRON LIMITED</td>
+                                  <td class="numeric">$3.17</td>
+                                  <td class="numeric">-0.02</td>
+                                  <td class="numeric">-0.47%</td>
+                                  <td class="numeric">$3.11</td>
+                                  <td class="numeric">$3.22</td>
+                                  <td class="numeric">$3.10</td>
+                                  <td class="numeric">5,416,303</td>
+                              </tr>
+                              </tbody>
+                          	</table>
+                          </section>
+                    </div>
+                  </div><!-- /content-panel -->
+              </div><!-- /col-lg-4 -->			
+		  			</div><!-- /row -->
+					</section><! --/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+      
+      <!--modal content start-->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+			    <div class="modal-dialog" role="document">  
+			        <div class="modal-content">  
+		            <div class="modal-header">  
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span  
+		                        aria-hidden="true">×</span></button>  
+		                <h4 class="modal-title" id="exampleModalLabel">文件上传</h4>  
+		            </div>  
+		            <div class="modal-body">  
+		                <!--<form>  
+		                    <div class="form-group">  
+		                        <label for="recipient-name" class="control-label">Recipient:</label>  
+		                        <input type="text" class="form-control" id="recipient-name">  
+		                    </div>  
+		                    <div class="form-group">  
+		                        <label for="message-text" class="control-label">Message:</label>  
+		                        <textarea class="form-control" id="message-text"></textarea>  
+		                    </div>  
+		                </form>-->
+		                <div id="demo" class="demo"></div>
+		            </div>  
+		            <div class="modal-footer">  
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>  
+		                <!--<button type="button" class="btn btn-primary">保存</button>  -->
+		            </div>  
+		        </div>  
+			    </div>  
+			</div>
+			<!--modal content end-->
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2014 - Alvarez.is - More Templates  - Collect from 
+              <a href="attachment_list.html#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script th:src="@{/assets/js/jquery.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.js}"></script>
+    <script th:class="include" type="text/javascript" th:src="@{/assets/js/jquery.dcjqaccordion.2.7.js}"></script>
+    <script th:src="@{/assets/js/jquery.scrollTo.min.js}"></script>
+    <script th:src="@{/assets/js/jquery.nicescroll.js}" type="text/javascript"></script>
+
+    <!--common script for all pages-->
+    <script th:src="@{/assets/js/common-scripts.js}"></script>
+    
+    <!--HTML5 UploadFile core script-->
+    <script th:src="@{/assets/h5upload/core/zyFile.js}"></script>
+    <script th:src="@{/assets/h5upload/control/js/zyUpload.js}"></script>
+    <script th:src="@{/assets/h5upload/core/jq22.js}"></script>
+
+    <!--script for this page-->
+    <script type="text/javascript" th:inline="javascript">
+        $(document).ready(function (){
+            $(".cid").each(function(index){
+                $(this).click(function(){
+                    $("#category-all").removeClass("selective");
+                    $(".cid span").removeClass("selective");
+                    $(".cid span").eq(index).addClass("selective");
+                });
+            });
+        });
+    </script>
+    
+
+  </body>
+</html>
