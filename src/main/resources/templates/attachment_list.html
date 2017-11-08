@@ -19,6 +19,9 @@
     <link th:href="@{/assets/css/style.css}" rel="stylesheet">
     <link th:href="@{/assets/css/style-responsive.css}" rel="stylesheet">
 
+    <!-- Message core CSS -->
+    <link th:href="@{/assets/toastr/toastr.min.css}" rel="stylesheet">
+
     <!-- JqueryTree core CSS -->
     <link th:href="@{/assets/jqtree/css/style.css}" rel="stylesheet"/>
     
@@ -139,7 +142,7 @@
                         <div class="col-lg-9">
                         <div class="col-lg-9"></div>
                         <div class="col-lg-3" style="padding-bottom: 12px;">
-                            <button type="button" class="btn btn-theme03" data-toggle="modal" data-target="#myModal"><i class="fa fa-upload" aria-hidden="true"></i> 上传</button>
+                            <button type="button" class="btn btn-theme03" id="upload"><i class="fa fa-upload" aria-hidden="true"></i> 上传</button>
                             <button type="button" class="btn btn-theme04"><i class="fa fa-recycle" aria-hidden="true"></i> 批量删除</button>
                         </div>
                           <section id="unseen">
@@ -339,6 +342,7 @@
     <script th:class="include" type="text/javascript" th:src="@{/assets/js/jquery.dcjqaccordion.2.7.js}"></script>
     <script th:src="@{/assets/js/jquery.scrollTo.min.js}"></script>
     <script th:src="@{/assets/js/jquery.nicescroll.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/toastr/toastr.js}"></script>
 
     <!--common script for all pages-->
     <script th:src="@{/assets/js/common-scripts.js}"></script>
@@ -349,18 +353,7 @@
     <script th:src="@{/assets/h5upload/core/jq22.js}"></script>
 
     <!--script for this page-->
-    <script type="text/javascript" th:inline="javascript">
-        $(document).ready(function (){
-            $(".cid").each(function(index){
-                $(this).click(function(){
-                    $("#category-all").removeClass("selective");
-                    $(".cid span").removeClass("selective");
-                    $(".cid span").eq(index).addClass("selective");
-                });
-            });
-        });
-    </script>
-    
+    <script type="text/javascript" th:src="@{/controller/attachment.js}"></script>
 
   </body>
 </html>
