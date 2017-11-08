@@ -1,7 +1,9 @@
 package com.lord.advertis.service;
 
 import com.lord.advertis.domain.Attachment;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,4 +24,5 @@ public interface AttachmentService {
 	 
 	 public List<Attachment> findAll();
 
+	 public int uploadFile(MultipartFile[] files, Integer categoryId, String realPath, String filePath);
 }
