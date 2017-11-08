@@ -1,6 +1,8 @@
 package com.lord.advertis.utils;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.UUID;
 
 /**
  *
@@ -25,4 +27,17 @@ public class FileUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 截取文件类型
+     * @author WangShiCong
+     * @since 2017-11-8
+     * @return afterStr
+     */
+    public static String subSuffix(String str){
+        int i = str.lastIndexOf(".");
+        str=str.substring(i, str.length());
+        return str;
+    }
+
 }
