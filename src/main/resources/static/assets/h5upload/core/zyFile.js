@@ -145,7 +145,8 @@ var ZYFILE = {
 			var self = this;  // 在each中this指向没个v  所以先将this保留
 			
 			var formdata = new FormData();
-			formdata.append("fileList", file);	         		
+			formdata.append("fileList", file);
+            formdata.append("categoryId", $('#categoryId').val()); // 获取分类id
 			var xhr = new XMLHttpRequest();
 			// 绑定上传事件
 			// 进度
