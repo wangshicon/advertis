@@ -96,5 +96,12 @@
     <include refid="Base_Column_List" />
     from attachment
   </select>
+  
+  <select id="findByCategoryId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from attachment
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
 
 </mapper>
