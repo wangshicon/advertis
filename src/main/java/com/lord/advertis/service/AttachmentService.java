@@ -24,5 +24,7 @@ public interface AttachmentService {
 	 
 	 public List<Attachment> findAll();
 
+	 public List<Attachment> findByCategoryId(Integer cid);
+
 	 public int uploadFile(MultipartFile[] files, Integer categoryId, String realPath, String filePath);
 }
