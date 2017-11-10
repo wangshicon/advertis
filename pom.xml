@@ -92,6 +92,13 @@
 			<artifactId>javamelody-core</artifactId>
 			<version>1.53.0</version>
 		</dependency>
+
+		<!-- ECharts的支持 -->
+		<dependency>
+			<groupId>com.github.abel533</groupId>
+			<artifactId>ECharts</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
