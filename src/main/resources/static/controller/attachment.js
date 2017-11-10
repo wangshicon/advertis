@@ -37,7 +37,7 @@ function deleById(id){
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
-                        url: 'attachment/delete/'+id,
+                        url: '/attachment/delete/'+id,
                         success: function(result) {
                             if(result.code > -1){
                                 toastr.success(result.msg);
