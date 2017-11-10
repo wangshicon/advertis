@@ -54,6 +54,11 @@ public class AttachmentServiceImpl implements AttachmentService{
     }
 
     @Override
+    public List<Attachment> findByCategoryId(Integer cid) {
+        return attachmentDao.findByCategoryId(cid);
+    }
+
+    @Override
     public int uploadFile(MultipartFile[] files, Integer categoryId, String realPath, String filePath) {
         int flag = 0;
         if (files.length > 0){
@@ -71,7 +76,7 @@ public class AttachmentServiceImpl implements AttachmentService{
                 attachment.setFilepath(filePath + files[i].getOriginalFilename()); // 页面访问文件路径
                 attachment.setCid(categoryId);  // 所属分类
                 try {
-                    files[i].transferTo(new File(realPath + "/" + files[i].getOriginalFilename()));
+                    files[i].transferTo(new File(realPath + "/" + attachment.getAttname()));
                     flag = attachmentDao.insertSelective(attachment);       // 保存附件信息到数据库
                 } catch (IOException e) {
                     throw new AdvertisException(ResultEnum.COPY_ERROR);
