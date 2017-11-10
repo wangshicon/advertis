@@ -10,4 +10,6 @@ import java.util.List;
 public interface AttachmentDao extends BaseMapper<Attachment, Integer>{
 
     public List<Attachment> findAll();
+
+    public List<Attachment> findByCategoryId(Integer cid);
 }
