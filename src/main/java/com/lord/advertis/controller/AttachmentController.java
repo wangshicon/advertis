@@ -61,6 +61,31 @@ public class AttachmentController {
 		map.put("list", list);
 		model.addAttribute("attachments", map);
 		model.addAttribute("categorys", categories);
+		model.addAttribute("cid", 0);
+		return "attachment_list";
+	}
+
+	/**
+	 *
+	 * @Title: findByCid
+	 * @Description: 根据分类查询附件列表
+	 * @param model
+	 * @param cid 分类id
+	 * @return
+	 * @author Lord
+	 * @date 2017年11月10日 上午9:46:18
+	 */
+	@GetMapping(value= "category/{cid}")
+	public String findByCid(Model model, @PathVariable("cid") Integer cid){
+		Page<?> page = PageHelper.startPage(PageSize.ONE.getSize(), PageSize.TEN.getSize(), true);
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Attachment> list = attachmentService.findByCategoryId(cid);
+		List<Category> categories = categoryService.findAll();
+		map.put("total", page.getTotal());
+		map.put("list", list);
+		model.addAttribute("attachments", map);
+		model.addAttribute("categorys", categories);
+		model.addAttribute("cid", cid);
 		return "attachment_list";
 	}
 
@@ -148,7 +173,7 @@ public class AttachmentController {
 	 * @author Lord 
 	 * @date 2017年11月6日 上午9:55:36
 	 */
-	@DeleteMapping(value="/delete/{id}")
+	@DeleteMapping(value="delete/{id}")
 	@ResponseBody
 	public ResultAjax<Attachment> attachmentDelete(@PathVariable("id") Integer id){
 		return ResultUtil.success(attachmentService.delete(id));
