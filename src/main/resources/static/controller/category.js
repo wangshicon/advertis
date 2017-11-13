@@ -11,7 +11,7 @@ $("#sub").click(function(){
     $.ajax({
         type: 'PUT',
         data: $("#form1").serialize(),
-        url: '/category/edit',
+        url: '/manager/category/edit',
         success: function(result) {
             if(result.code == 0){
                 $('#myModal').modal('hide');
@@ -28,7 +28,7 @@ $("#sub").click(function(){
 function findById(id){
     $.ajax({
         type: 'GET',
-        url: '/category/'+id,
+        url: '/manager/category/'+id,
         success: function(result) {
             if(result.code == 0){
                 $("#categoryId").val(result.data.id);
@@ -50,7 +50,7 @@ function deleById(id){
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
-                        url: 'category/delete/'+id,
+                        url: '/manager/category/delete/'+id,
                         success: function(result) {
                             if(result.code > -1){
                                 toastr.success(result.msg);
@@ -73,7 +73,7 @@ function deleById(id){
 function findModule(id){
     $.ajax({
         type: 'GET',
-        url: '/category/'+id,
+        url: '/manager/category/'+id,
         success: function(result) {
             if(result.code == 0){
                 zeroModal.show({

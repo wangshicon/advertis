@@ -11,7 +11,7 @@ $("#sub").click(function(){
     $.ajax({
         type: 'PUT',
         data: $("#form1").serialize(),
-        url: '/module/edit',
+        url: '/manager/module/edit',
         success: function(result) {
             if(result.code == 0){
                 $('#myModal').modal('hide');
@@ -28,7 +28,7 @@ $("#sub").click(function(){
 function findById(id){
     $.ajax({
         type: 'GET',
-        url: '/module/'+id,
+        url: '/manager/module/'+id,
         success: function(result) {
             if(result.code == 0){
                 $("#moduleId").val(result.data.id);
@@ -51,7 +51,7 @@ function deleById(id){
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
-                        url: 'module/delete/'+id,
+                        url: '/manager/module/delete/'+id,
                         success: function(result) {
                             if(result.code > -1){
                                 toastr.success(result.msg);
@@ -74,7 +74,7 @@ function deleById(id){
 function findModule(id){
     $.ajax({
         type: 'GET',
-        url: '/module/'+id,
+        url: '/manager/module/'+id,
         success: function(result) {
             if(result.code == 0){
                 zeroModal.show({

@@ -37,7 +37,7 @@ function deleById(id){
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
-                        url: '/attachment/delete/'+id,
+                        url: '/manager/attachment/delete/'+id,
                         success: function(result) {
                             if(result.code > -1){
                                 toastr.success(result.msg);
@@ -60,7 +60,7 @@ function deleById(id){
 function findAttach(id){
     $.ajax({
         type: 'GET',
-        url: '/attachment/'+id,
+        url: '/manager/attachment/'+id,
         success: function(result) {
             if(result.code == 0){
                 zeroModal.show({

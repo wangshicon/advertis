@@ -17,7 +17,7 @@ function deleById(id){
                 action: function(){
                     $.ajax({
                         type: 'DELETE',
-                        url: 'customers/delete/'+id,
+                        url: '/manager/customers/delete/'+id,
                         success: function(result) {
                             if(result.code > -1){
                                 toastr.success(result.msg);
@@ -40,7 +40,7 @@ function deleById(id){
 function findCustomer(id){
     $.ajax({
         type: 'GET',
-        url: '/customers/'+id,
+        url: '/manager/customers/'+id,
         success: function(result) {
             if(result.code == 0){
                 zeroModal.show({
