@@ -11,16 +11,16 @@
     <title>宏博广告网站管理平台</title>
 
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/assets/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/manager/assets/css/bootstrap.css}" rel="stylesheet">
     <!--external css-->
-    <link th:href="@{/assets/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+    <link th:href="@{/manager/assets/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-    <link th:href="@{/assets/css/style.css}" rel="stylesheet">
-    <link th:href="@{/assets/css/style-responsive.css}" rel="stylesheet">
+    <link th:href="@{/manager/assets/css/style.css}" rel="stylesheet">
+    <link th:href="@{/manager/assets/css/style-responsive.css}" rel="stylesheet">
 
   	<!-- Message core CSS -->
-  	<link th:href="@{/assets/toastr/toastr.min.css}" rel="stylesheet">
+  	<link th:href="@{/manager/assets/toastr/toastr.min.css}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -79,15 +79,15 @@
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script th:src="@{/assets/js/jquery.js}"></script>
-    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
-  	<script th:src="@{/assets/toastr/toastr.js}"></script>
+    <script th:src="@{/manager/assets/js/jquery.js}"></script>
+    <script th:src="@{/manager/assets/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/manager/assets/toastr/toastr.js}"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" th:src="@{/assets/js/jquery.backstretch.min.js}"></script>
+    <script type="text/javascript" th:src="@{/manager/assets/js/jquery.backstretch.min.js}"></script>
     <script>
-        $.backstretch("/assets/img/login-bg.jpg", {speed: 500});
+        $.backstretch("/manager/assets/img/login-bg.jpg", {speed: 500});
     </script>
 
 	<script type="text/javascript" th:inline="javascript">
@@ -96,10 +96,10 @@
             $.ajax({
                 type: 'POST',
                 data: $("#form1").serialize(),
-                url: '/user/login',
+                url: '/manager/user/login',
                 success: function(result) {
                     if(result.code == 0){
-                        window.location.href = "/";
+                        window.location.href = "/manager";
                     }else{
 						toastr.error(result.msg);
                     }
