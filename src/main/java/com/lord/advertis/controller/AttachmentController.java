@@ -30,7 +30,7 @@ import java.util.Map;
  * Created by on 2017/11/6.
  */
 @Controller
-@RequestMapping(value = "/attachment")
+@RequestMapping(value = "/manager/attachment")
 public class AttachmentController {
 
 	@Autowired
@@ -62,7 +62,7 @@ public class AttachmentController {
 		model.addAttribute("attachments", map);
 		model.addAttribute("categorys", categories);
 		model.addAttribute("cid", 0);
-		return "attachment_list";
+		return "manager/attachment_list";
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class AttachmentController {
 		model.addAttribute("attachments", map);
 		model.addAttribute("categorys", categories);
 		model.addAttribute("cid", cid);
-		return "attachment_list";
+		return "manager/attachment_list";
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class AttachmentController {
 		map.put("total", page.getTotal());
 		map.put("list", list);
 		model.addAttribute("attachments", map);
-		return "gallery";
+		return "manager/gallery";
 	}
 	
 	/**

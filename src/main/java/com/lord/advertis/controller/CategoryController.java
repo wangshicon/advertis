@@ -26,7 +26,7 @@ import com.github.pagehelper.PageHelper;
  * Created by on 2017/10/31.
  */
 @Controller
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/manager/category")
 public class CategoryController {
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class CategoryController {
 		map.put("total", page.getTotal());
 		map.put("list", list);
 		model.addAttribute("categorys", map);
-		return "category_list";
+		return "manager/category_list";
 	}
 	
 	

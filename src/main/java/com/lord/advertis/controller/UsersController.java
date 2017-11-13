@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/manager/user")
 public class UsersController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class UsersController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "manager/login";
     }
 
     @PostMapping("/login")
@@ -55,7 +55,7 @@ public class UsersController {
     public String logout(HttpSession session) {
         // 移除session
         session.removeAttribute(WebSecurityConfig.SESSION_KEY);
-        return "redirect:/user/login";
+        return "redirect:/manager/user/login";
     }
 
 }

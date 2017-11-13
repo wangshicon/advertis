@@ -26,7 +26,7 @@ import java.util.Map;
  * Created by on 2017/10/31.
  */
 @Controller
-@RequestMapping(value = "/module")
+@RequestMapping(value = "/manager/module")
 public class ModuleController {
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class ModuleController {
 		map.put("total", page.getTotal());
 		map.put("list", list);
 		model.addAttribute("moudles", map);
-		return "module_list";
+		return "manager/module_list";
 	}
 	
 	

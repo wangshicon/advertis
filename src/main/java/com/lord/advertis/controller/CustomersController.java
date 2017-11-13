@@ -26,7 +26,7 @@ import java.util.Map;
  * Created by on 2017/11/3.
  */
 @Controller
-@RequestMapping(value = "/customers")
+@RequestMapping(value = "/manager/customers")
 public class CustomersController {
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class CustomersController {
 		map.put("total", page.getTotal());
 		map.put("list", list);
 		model.addAttribute("customers", map);
-		return "customers_list";
+		return "manager/customers_list";
 	}
 	
 	

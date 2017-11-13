@@ -45,4 +45,15 @@ public class IndexController {
         model.addAttribute("users", usersList);
         return "index";
     }
+
+    @GetMapping("/manager")
+    public String manager(Model model){
+        List<Customers> customersList = customersService.selectByLimit(0,4);
+        List<Users> usersList = usersService.findAll();
+
+        /*剩余统计图表展示模块*/
+        model.addAttribute("customers", customersList);
+        model.addAttribute("users", usersList);
+        return "/manager/index";
+    }
 }
