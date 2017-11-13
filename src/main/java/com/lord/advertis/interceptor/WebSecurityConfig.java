@@ -38,10 +38,10 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter {
 
         // 排除配置
         addInterceptor.excludePathPatterns("/error");
-        addInterceptor.excludePathPatterns("/user/login**");
+        addInterceptor.excludePathPatterns("/manager/user/login**");
 
         // 拦截配置
-        addInterceptor.addPathPatterns("/**");
+        addInterceptor.addPathPatterns("/manager/**");
     }
 
     /**
@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter {
             }
 
             // 跳转登录
-            String url = "/user/login";
+            String url = "/manager/user/login";
             response.sendRedirect(url);
             return false;
         }
