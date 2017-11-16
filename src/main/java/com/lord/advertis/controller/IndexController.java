@@ -1,8 +1,5 @@
 package com.lord.advertis.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.lord.advertis.common.PageSize;
 import com.lord.advertis.domain.*;
 import com.lord.advertis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -29,9 +24,6 @@ public class IndexController {
     private UsersService usersService;
 
     @Autowired
-    private BrowseService browseService;
-
-    @Autowired
     private ModuleService moduleService;
 
     @Autowired
@@ -44,7 +36,7 @@ public class IndexController {
     public String index(Model model) {
         List<Module> moduleList = moduleService.findAll();
         List<Category> categoryList = categoryService.findAll();
-        List<Attachment> attachmentList = attachmentService.findAll();
+        List<Attachment> attachmentList = attachmentService.selectByLimit(0, 12);
         model.addAttribute("home", moduleList.get(0));
         model.addAttribute("history", moduleList.get(1));
         model.addAttribute("service", moduleList.get(2));
