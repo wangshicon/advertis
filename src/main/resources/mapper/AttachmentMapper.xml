@@ -104,4 +104,12 @@
     where cid = #{cid,jdbcType=INTEGER}
   </select>
 
+  <select id="selectBylimit" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attachment
+    ORDER BY id DESC
+    limit ${offset},${limit}
+  </select>
+
 </mapper>
