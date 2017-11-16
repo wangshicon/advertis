@@ -342,12 +342,13 @@
 
 							<div style="clear:both;"></div>
 							<div id="portfoliowork">
-								<div class="single_portfolio tile scale-anm" th:each="attachment :${attachments}">
-									<img th:src="${attachment.filepath}" alt=""/>
+								<div class="single_portfolio tile scale-anm" th:each="attachment : ${attachments}">
+									<img th:src="${attachment.filepath}" alt="" />
 									<a th:href="${attachment.filepath}" class="portfolio-img">
 										<div class="grid_item_overlay">
 											<div class="separator4"></div>
-											<p>art / t-shirt</p>
+											<h3>宏博广告</h3>
+											<p>只为更美好...</p>
 										</div>
 									</a>
 								</div>
