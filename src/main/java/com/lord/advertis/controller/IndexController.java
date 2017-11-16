@@ -36,7 +36,7 @@ public class IndexController {
     public String index(Model model) {
         List<Module> moduleList = moduleService.findAll();
         List<Category> categoryList = categoryService.findAll();
-        List<Attachment> attachmentList = attachmentService.selectByLimit(0, 12);
+        List<Attachment> attachmentList = attachmentService.selectByLimit(0, 8);
         model.addAttribute("home", moduleList.get(0));
         model.addAttribute("history", moduleList.get(1));
         model.addAttribute("service", moduleList.get(2));
