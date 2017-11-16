@@ -461,7 +461,7 @@
 														</div>
 														<div class="col-sm-12">
 															<div class="form-group">
-																<input type="phone" class="form-control" name="phone" placeholder="电话" required="">
+																<input type="text" id="phone" class="form-control" name="phone" placeholder="电话" required="" pattern="^1[3-9]\d{9}$">
 															</div>
 														</div>
 													</div>
@@ -471,7 +471,7 @@
 													</div>
 
 													<div class="">
-														<input id="sub" type="button" value="发送信息" class="btn btn-lg">
+														<input id="sub" type="submit" value="发送信息" class="btn btn-lg">
 													</div>
 												</div>
 											</form>
@@ -543,7 +543,13 @@
 
 		<script type="text/javascript" th:inline="javascript">
             toastr.options.positionClass = 'toast-bottom-right';
-            $("#sub").click(function(){
+            phone.oninput=function(){
+                phone.setCustomValidity("");
+            };
+            phone.oninvalid=function(){
+                phone.setCustomValidity("请不要输入火星的手机号好吗？");
+            };
+            $("#form1").on("submit", function(ev) {
                 $.ajax({
                     type: 'POST',
                     data: $("#form1").serialize(),
@@ -556,6 +562,10 @@
                         }
                     }
                 });
+                //阻止submit表单提交
+                ev.preventDefault();
+                //或者return false
+                //return false;
             });
 		</script>
 
