@@ -59,6 +59,11 @@ public class AttachmentServiceImpl implements AttachmentService{
     }
 
     @Override
+    public List<Attachment> selectByLimit(Integer offset, Integer limit) {
+        return attachmentDao.selectBylimit(offset, limit);
+    }
+
+    @Override
     public int uploadFile(MultipartFile[] files, Integer categoryId, String realPath, String filePath) {
         int flag = 0;
         if (files.length > 0){
