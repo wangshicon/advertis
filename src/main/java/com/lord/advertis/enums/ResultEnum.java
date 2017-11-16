@@ -9,6 +9,7 @@ package com.lord.advertis.enums;
 public enum ResultEnum {
 	UNKNOW_ERROR(-1, "未知错误"),
 	SUCCESS(0, "成功"),
+	COPY_ERROR(-2, "上传失败"),
 	;
 	
 	private Integer code;
