@@ -78,7 +78,7 @@ public class AttachmentServiceImpl implements AttachmentService{
                 attachment.setFilename(files[i].getOriginalFilename());     // 源文件名称
                 attachment.setAttname(UUIDUtil.generate()+ FileUtil.subSuffix(files[i].getOriginalFilename())); // 附件存在名称
                 attachment.setFilesize((int) files[i].getSize());           // 文件大小
-                attachment.setFilepath(filePath + files[i].getOriginalFilename()); // 页面访问文件路径
+                attachment.setFilepath(filePath + attachment.getAttname()); // 页面访问文件路径
                 attachment.setCid(categoryId);  // 所属分类
                 try {
                     files[i].transferTo(new File(realPath + "/" + attachment.getAttname()));
