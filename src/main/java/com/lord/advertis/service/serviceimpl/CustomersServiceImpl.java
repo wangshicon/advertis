@@ -6,6 +6,7 @@ import com.lord.advertis.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class CustomersServiceImpl implements CustomersService {
 
 	@Override
 	public int insert(Customers customers) {
+		customers.setCreatetime(new Date());
 		return customersDao.insertSelective(customers);
 	}
 
