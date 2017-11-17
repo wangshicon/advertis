@@ -24,4 +24,6 @@ public interface CustomersService {
 
 	 public List<Customers> selectByLimit(Integer offset, Integer limit);
 
+	 public Integer findTotalByState(Integer status);
+
 }
