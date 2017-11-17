@@ -1,5 +1,6 @@
 package com.lord.advertis.service.serviceimpl;
 
+import com.lord.advertis.enums.ReadStatus;
 import com.lord.advertis.dao.CustomersDao;
 import com.lord.advertis.domain.Customers;
 import com.lord.advertis.service.CustomersService;
@@ -46,7 +47,7 @@ public class CustomersServiceImpl implements CustomersService {
 	public Customers findById(Integer id) {
 		Customers entity = new Customers();
 		entity.setId(id);
-		entity.setStatus(1);
+		entity.setStatus(ReadStatus.Read.getValue());
 		customersDao.updateByPrimaryKeySelective(entity);
 		return customersDao.selectByPrimaryKey(id);
 	}
@@ -59,6 +60,11 @@ public class CustomersServiceImpl implements CustomersService {
 	@Override
 	public List<Customers> selectByLimit(Integer offset, Integer limit) {
 		return customersDao.selectBylimit(offset, limit);
+	}
+
+	@Override
+	public Integer findTotalByState(Integer status) {
+		return customersDao.findTotalByState(status);
 	}
 
 }
