@@ -541,32 +541,14 @@
 		<script th:src="@{/assets/js/main.js}"></script>
 		<script th:src="@{/manager/assets/toastr/toastr.js}"></script>
 
+		<!--script for this page-->
+		<script type="text/javascript" th:src="@{/controller/index.js}"></script>
+
 		<script type="text/javascript" th:inline="javascript">
-            toastr.options.positionClass = 'toast-bottom-right';
-            phone.oninput=function(){
-                phone.setCustomValidity("");
+            if([[${session.isNew}]]){
+                var todayNum = [[${todayNum}]];
+                $.post("/manager/browse/add", {number: todayNum});
             };
-            phone.oninvalid=function(){
-                phone.setCustomValidity("请不要输入火星的手机号好吗？");
-            };
-            $("#form1").on("submit", function(ev) {
-                $.ajax({
-                    type: 'POST',
-                    data: $("#form1").serialize(),
-                    url: '/manager/customers/add',
-                    success: function(result) {
-                        if(result.code == 0){
-                            toastr.success("信息已记录");
-                        }else{
-                            toastr.error(result.msg);
-                        }
-                    }
-                });
-                //阻止submit表单提交
-                ev.preventDefault();
-                //或者return false
-                //return false;
-            });
 		</script>
 
 	</body>
