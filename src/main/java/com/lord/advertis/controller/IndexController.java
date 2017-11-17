@@ -1,6 +1,7 @@
 package com.lord.advertis.controller;
 
 import com.lord.advertis.domain.*;
+import com.lord.advertis.enums.ReadStatus;
 import com.lord.advertis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,10 +72,14 @@ public class IndexController {
      */
     @GetMapping("/manager")
     public String manager(Model model){
+        Integer unreadTotal = customersService.findTotalByState(ReadStatus.Unread.getValue());
+        System.out.println(unreadTotal);
         List<Customers> customersList = customersService.selectByLimit(0,4);
         List<Users> usersList = usersService.findAll();
 
         /*剩余统计图表展示模块*/
+        model.addAttribute("todayNum", BROWS_AMOUNT);
+        model.addAttribute("unreadNum", unreadTotal);
         model.addAttribute("customers", customersList);
         model.addAttribute("users", usersList);
         return "/manager/index";
