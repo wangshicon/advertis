@@ -115,4 +115,11 @@
     limit ${offset},${limit}
   </select>
 
+  <select id="findTotalByState" resultType="Integer" parameterType="java.lang.Integer">
+    select
+    count(*)
+    from customers
+    where status = #{status,jdbcType=INTEGER};
+  </select>
+
 </mapper>
