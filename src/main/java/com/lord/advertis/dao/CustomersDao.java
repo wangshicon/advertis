@@ -14,4 +14,5 @@ public interface CustomersDao extends BaseMapper<Customers, Integer>{
 
     public List<Customers> selectBylimit(@Param("offset")Integer offset, @Param("limit")Integer limit);
 
+    public Integer findTotalByState(Integer status);
 }
