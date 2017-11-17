@@ -138,16 +138,16 @@
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
                                 <span class="li_stack"></span>
-                                <h3>23</h3>
+                                <h3 th:text="${unreadNum}">23</h3>
                   			</div>
-                            <p>您收到23条客户意向未读信息。</p>
+                            <p th:text="'您收到'+ ${unreadNum} + '条客户意向未读信息。'">您收到23条客户意向未读信息。</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
                                 <span class="li_news"></span>
-                                <h3>+10</h3>
+                                <h3 th:text="'+' + ${todayNum}">+10</h3>
                   			</div>
-                            <p>最近有10多个人访问了你的页面。</p>
+                            <p th:text="'最近有' + ${todayNum} + '个人访问了你的页面。'">最近有10多个人访问了你的页面。</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
@@ -221,7 +221,7 @@
                       	</div>
                       	<div class="details">
                       		<p><muted th:text="${#dates.format(customer.createtime, 'yyyy-MM-dd HH:mm:ss')}"></muted><br/>
-                      		    <a href="#" th:text="${customer.username}">James Brown</a>
+                      		    <a th:href="@{/manager/customers}" th:text="${customer.username}">James Brown</a>
                                 <span th:text="${customer.phone}"></span><br/>
                                 <p th:text="${customer.message}+'...'"></p>
                       		</p>
@@ -237,7 +237,7 @@
                       		<img class="img-circle" th:src="@{/manager/assets/img/ui-danro.jpg}" width="35px" height="35px" align="">
                       	</div>
                       	<div class="details">
-                      		<p><a href="#" th:text="${user.username}">DAN ROGERS</a><br/>
+                      		<p><a th:text="${user.username}">DAN ROGERS</a><br/>
                       		   <muted th:text="${user.role}">Available</muted>
                       		</p>
                       	</div>
