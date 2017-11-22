@@ -490,7 +490,7 @@ Extra height css
     padding-top: 6.429rem;
 }
 .padding-bottom-90 {
-    padding-bottom: 6.429rem;
+    padding-bottom: 2.888rem;
 }
 .padding-bottom-0 {
     padding-bottom: 0;
@@ -838,6 +838,7 @@ input::-ms-input-placeholder {
 .main_service .single_service.single_service_text {
     margin-right:0px;
     background: #202020;
+    height: 676px;
 }
 .main_service .single_service.single_service_text .single_service_icon i{
     background: #f4f5f9;
