@@ -4,9 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.lord.advertis.common.PageSize;
 import com.lord.advertis.common.ResultAjax;
-import com.lord.advertis.domain.Category;
 import com.lord.advertis.domain.Customers;
-import com.lord.advertis.service.CategoryService;
 import com.lord.advertis.service.CustomersService;
 import com.lord.advertis.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +47,32 @@ public class CustomersController {
 		map.put("total", page.getTotal());
 		map.put("list", list);
 		model.addAttribute("customers", map);
+        model.addAttribute("page", PageSize.ONE.getSize());
 		return "manager/customers_list";
 	}
-	
-	
+
+    /**
+     *
+     * @Title: findPage
+     * @Description: 客户意向管列表分页
+     * @param model
+     * @param pageNum 当前页码
+     * @return
+     * @author Lord
+     * @date 2017年11月3日 上午11:26:18
+     */
+    @GetMapping(value="page")
+    public String findPage(Integer pageNum, Model model) {
+        Page<?> page = PageHelper.startPage(pageNum, PageSize.TEN.getSize(), true);
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Customers> list = customersService.findAll();
+        map.put("total", page.getTotal());
+        map.put("list", list);
+        model.addAttribute("customers", map);
+        model.addAttribute("page", pageNum);
+        return "manager/customers_list";
+    }
+
 	/**
 	 * 
 	 * @Title: customersFindOne
