@@ -6,6 +6,8 @@ import com.lord.advertis.service.BrowseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 
  * @Description: 访问统计业务实现逻辑类
@@ -36,5 +38,10 @@ public class BrowseServiceImpl implements BrowseService {
 	@Override
 	public Browse findById(Integer id) {
 		return browseDao.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Browse> findWeekCount() {
+		return browseDao.findWeekCount();
 	}
 }
