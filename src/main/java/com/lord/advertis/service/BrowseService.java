@@ -2,6 +2,8 @@ package com.lord.advertis.service;
 
 import com.lord.advertis.domain.Browse;
 
+import java.util.List;
+
 /**
  * 
  * @Description: 访问统计业务逻辑接口类
@@ -17,5 +19,7 @@ public interface BrowseService {
 	 public int update(Browse browse);
 	 
 	 public Browse findById(Integer id);
+
+	 public List<Browse> findWeekCount();
 
 }
