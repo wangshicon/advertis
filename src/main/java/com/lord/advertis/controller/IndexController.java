@@ -74,8 +74,9 @@ public class IndexController {
     public String manager(Model model){
         Integer unreadTotal = customersService.findTotalByState(ReadStatus.Unread.getValue());
         System.out.println(unreadTotal);
-        List<Customers> customersList = customersService.selectByLimit(0,4);
+        List<Customers> customersList = customersService.selectByLimit(0,3);
         List<Users> usersList = usersService.findAll();
+
 
         /*剩余统计图表展示模块*/
         model.addAttribute("todayNum", BROWS_AMOUNT);
