@@ -60,5 +60,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="findWeekCount" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from browse
+    where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(createdate)
+  </select>
 
 </mapper>
