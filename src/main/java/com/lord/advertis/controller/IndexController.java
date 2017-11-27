@@ -1,6 +1,7 @@
 package com.lord.advertis.controller;
 
 import com.lord.advertis.domain.*;
+import com.lord.advertis.echarts.EchartsUtil;
 import com.lord.advertis.enums.ReadStatus;
 import com.lord.advertis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class IndexController {
 
     @Autowired
     private AttachmentService attachmentService;
+
+    @Autowired
+    private BrowseService browseService;
 
     /**
      *
@@ -76,13 +80,13 @@ public class IndexController {
         System.out.println(unreadTotal);
         List<Customers> customersList = customersService.selectByLimit(0,3);
         List<Users> usersList = usersService.findAll();
+        List<Browse> browseList = browseService.findWeekCount();
 
-
-        /*剩余统计图表展示模块*/
         model.addAttribute("todayNum", BROWS_AMOUNT);
         model.addAttribute("unreadNum", unreadTotal);
         model.addAttribute("customers", customersList);
         model.addAttribute("users", usersList);
+        model.addAttribute("barData", EchartsUtil.dataToBarOption(browseList));
         return "/manager/index";
     }
 }
